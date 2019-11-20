@@ -1,7 +1,7 @@
 <?php
 include_once("config.php");
 
-if(isset($_POST['submit'])) {    
+if(isset($_POST['add'])) {    
     $title = $_POST['title'];
     $description = $_POST['description'];
     $create = $_POST['created_at'];
