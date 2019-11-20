@@ -41,9 +41,13 @@
                 <td><input type="text" name="updated_at"></td>
             </tr>
             <tr>               
-                <td></td>
-                <td><input type="submit" name="submit" value="sumbit">
-                </td>
+                <td>
+                <?php if isset($_GET["edit"]){?>
+                 <input type="submit" name="update" value="Update">
+                 <?php }else{ ?>
+                 <input type="submit" name="add" value="Add">
+                 <?php } ?>
+                </td>   
             </tr>
         </table>
     </form>
