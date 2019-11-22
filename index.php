@@ -2,13 +2,10 @@
 <head>
     <title>Add Data</title>
 </head>
-
 <body>
     <br/><br/>
-    
     <form action="posts.php" method="post" name="form1">
         <table width="25%" border="0">
-
             <tr> 
                 <td>Title</td>         
                 <td><input type="text" name="title" value="<?php if (isset($_GET['title'])){ echo $_GET['title']; } ?>"></td>
@@ -17,20 +14,17 @@
                 <td>Description </td>
                 <td><input type="text" name="description" value="<?php if (isset($_GET['description'])){ echo $_GET['description']; }?>"></td>
             </tr> 
-                <td> </td>
-                <td> </td>
+                <td></td>
+                <td></td>
                 <td> <input type="submit" name="add" value="Add"></td>
                 <td><input type="hidden" name="id" value="<?php echo $_GET['post_id'];?>"></td>
                 <td><input type="submit" name="update" value="Update"></td>
             </tr>
         </table>
     </form>
-    
     <title>Homepage</title>
 </head>
-
 <body>
-   
     <table width='80%' border=0>
         <tr bgcolor='#CCCCCC'>
             <td>Title</td>
@@ -45,7 +39,8 @@
             echo "<td>".$res['title']."</td>";
             echo "<td>".$res['description']."</td>";  
             echo "<td><a href=\"posts.php?post_id=$res[id]\">Edit</a> 
-            |<a href=\"posts.php?delete_posts=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";   
+            |<a href=\"posts.php?delete_posts=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>"; 
+            echo "</tr>";
         }    
         ?>
     </table>
