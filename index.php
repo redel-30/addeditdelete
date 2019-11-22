@@ -29,12 +29,7 @@
     <title>Homepage</title>
 </head>
 </body>
-   
 
-
-
-
-   
     <table width='80%' border=0>
         <tr bgcolor='#CCCCCC'>
             <td>Title</td>
