@@ -1,8 +1,6 @@
 <?php
 include_once("config.php");
 
-//add
-
 if(isset($_POST['add'])) {    
     $title = $_POST['title'];
     $description = $_POST['description'];
@@ -13,16 +11,9 @@ if(isset($_POST['add'])) {
     header("location: index.php?msg=successfully updates");
 
 }
-
-
-
-
-
-
         if(isset($_GET['post_id'])) {  
 
          $post_id = $_GET['post_id'];
-
 
     $result = mysqli_query($mysqli, "SELECT * FROM posts WHERE id=$post_id");
     while($res = mysqli_fetch_array($result)){
@@ -35,22 +26,11 @@ if(isset($_POST['add'])) {
      
       }
 }
-
-
-
-
-
-
-
     if(isset($_POST['update'])){   
-
-
     $id = $_POST['id'];
-
-    
+        
     $title=$_POST['title'];
     $description=$_POST['description'];
-
     $id = $_POST['id'];
     
     $title=$_POST['title'];
@@ -63,16 +43,7 @@ if(isset($_POST['add'])) {
     $description = $res['description'];
 }
 
-
-
-
-
-
-
-
 if (isset($_GET['delete_posts']))
-
-
 {
     $delete_posts = $_GET['delete_posts'];
     
@@ -81,8 +52,5 @@ if (isset($_GET['delete_posts']))
     header("Location:index.php");
 
 }
-
-
-
 ?>
 
