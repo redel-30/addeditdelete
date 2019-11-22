@@ -4,11 +4,9 @@
     </head>
 
     <body>
-        <br/><br/>
-        
-        <form action="posts.php" method="post" name="form1">
+    <br/><br/>     
+    <form action="posts.php" method="post" name="form1">
             <table width="25%" border="0">
-
                     <tr> 
                         <td>Title</td>         
                         <td><input type="text" name="title" value="<?php if (isset($_GET['title'])){ echo $_GET['title']; } ?>"></td>
@@ -24,17 +22,10 @@
                         <td><input type="submit" name="update" value="Update"></td>
                     </tr>
             </table>
-        </form>
-        
-        <title>Homepage</title>
+        </form>       
+     <title>Homepage</title>
     </head>
     </body>
-       
-
-
-
-
-       
         <table width='80%' border=0>
             <tr bgcolor='#CCCCCC'>
                 <td>Title</td>
