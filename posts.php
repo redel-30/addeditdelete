@@ -1,56 +1,73 @@
 <?php
 include_once("config.php");
 
-if(isset($_POST['submit'])) {    
+if(isset($_POST['add'])) {    
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $create = $_POST['created_at'];
-    $update = $_POST['updated_at'];
 
-    if(empty($title) || empty($description) || empty($create) || empty($update)) {                
-        if(empty($title)) {
-            echo "<font color='red'>Title field is empty.</font><br/>";
-        }
-        
-        if(empty($description)) {
-            echo "<font color='red'>Description field is empty.</font><br/>";
-        }
-        
-        if(empty($create)) {
-            echo "<font color='red'>Created at field is empty.</font><br/>";
-        }
-        if(empty($update)) {
-            echo "<font color='red'>Updated at field is empty.</font><br/>";
-        }
-        echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
-    } else { 
+    $result = mysqli_query($mysqli, "INSERT INTO posts(title,description) VALUES('$title','$description')");
 
-        $result = mysqli_query($mysqli, "INSERT INTO posts(title,description,created_at,updated_at) VALUES('$title','$description','$create','$update')");
-        
-        
-        header("location: index.php");
-        
-    }
+
+    header("location: index.php?msg=successfully updates");
+
 }
-?>
-<?php
+
 // edit
 
 if(isset($_GET['post_id'])) {  
     $post_id = $_GET['post_id'];
 
-$result = mysqli_query($mysqli, "SELECT * FROM posts WHERE id=$post_id");
-while($res = mysqli_fetch_array($result))
 
-{
+    $result = mysqli_query($mysqli, "SELECT * FROM posts WHERE id=$post_id");
+    while($res = mysqli_fetch_array($result))
+
+    {
      $title = $res['title'];
      $description = $res['description'];
      $create = $res['created_at'];
      $update = $res['updated_at']; 
+     $id = $res['id'];
 
 
-
-     header("location: index.php?edit=true&title=".$title."&description=".$description);
-    }
+     header("location: index.php?edit=1&post_id=".$id."&title=".$title."&description=".$description);
+ }
 }
+if(isset($_POST['update']))
+{    
+    $id = $_POST['id'];
+    
+    $title=$_POST['title'];
+    $description=$_POST['description'];
+
+    $id = $_POST['id'];
+    
+    $title=$_POST['title'];
+    $description=$_POST['description'];
+
+    $result = mysqli_query($mysqli, "UPDATE posts SET title='$title',description='$description'WHERE id=$id");
+
+    header("Location: index.php");
+}
+$result = mysqli_query($mysqli, "SELECT * FROM posts WHERE id=$id");
+
+while($res = mysqli_fetch_array($result))
+{
+    $title = $res['title'];
+    $description = $res['description'];
+}
+
+
+if (isset($_GET['delete_posts']))
+{
+    $delete_posts = $_GET['delete_posts'];
+    
+    $result = mysqli_query($mysqli, "DELETE FROM posts WHERE id=$delete_posts");
+    
+    header("Location:index.php");
+
+}
+
+
+
 ?>
+
